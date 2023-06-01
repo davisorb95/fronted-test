@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Tabla de usuarios</h1>
+  <div class="mb-3">
+    <label for="search" class="form-label">Buscar usuario</label>
+    <input
+      type="text"
+      class="form-control"
+      id="search"
+      placeholder="Buscar..."
+      name="search"
+      autocomplete="off"
+      [(ngModel)]="text"
+      (keyup)="searchUser()">
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="table-primary" scope="col">Id</th>
+        <th class="table-primary" scope="col">Nombre</th>
+        <th class="table-primary" scope="col">Apellido</th>
+        <th class="table-primary" scope="col">Correo</th>
+        <th class="table-primary" scope="col">Género</th>
+        <th class="table-primary" scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | filter:lastPosition:pageSize:text">
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.date_in }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center align-items-center">
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <button
+      type="button"
+      class="btn btn-primary me-2"
+      [disabled]="lastPosition === 0"
+      (click)="prevPage()">
+      Anterior
+    </button>
+    <button 
+      type="button"
+      class="btn btn-primary"
+      [disabled]="(users | filter:lastPosition:pageSize:text).length === 0"
+      (click)="nextPage()">
+      Siguiente
+    </button>
+  </div>
+</div>
