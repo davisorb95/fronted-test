@@ -14,7 +14,6 @@ export class UsersComponent implements OnInit {
   ) { }
 
   users: IUser[] = [];
-  pagesNumber: number = 0;
   pageSize: number = 10;
   lastPosition: number = 0;
   text: string = '';

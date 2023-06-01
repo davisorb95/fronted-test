@@ -13,7 +13,7 @@ export class FilterPipe implements PipeTransform {
         .slice(lastPosition, lastPosition + pageSize);
 
     const filteredUsers = users
-      .filter(user => user.first_name.toLocaleLowerCase().includes(text.toLocaleLowerCase()))
+      .filter(user => user.first_name.toLowerCase().includes(text.toLowerCase()))
       .sort((a, b) => a.first_name < b.first_name ? -1 : a.first_name > b.first_name ? 1 : 0)
       .slice(lastPosition, lastPosition + pageSize);
 
